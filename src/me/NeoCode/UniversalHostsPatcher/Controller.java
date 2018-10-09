@@ -13,12 +13,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import me.NeoCode.UniversalHostsPatcher.OsCheck.OSType;
@@ -38,17 +41,26 @@ public class Controller {
 	Text by;
 
 	@FXML
+	ChoiceBox<String> scrips;
+
+	@FXML
 	private void initialize() {
+
+		getScrips();
+
+		scrips.setTooltip(new Tooltip("Script"));
+		url.setTooltip(new Tooltip("Custom URL"));
+
 		by.setOnMouseClicked((event -> {
 			try {
-				Desktop.getDesktop().browse(new URI("https://www.youtube.com/channel/UChO8yVHpDAmAVOaEdPe2cCw"));
+				Desktop.getDesktop().browse(new URI("https://github.com/xRealNeon"));
 			} catch (IOException | URISyntaxException e) {
 				e.printStackTrace();
 			}
 		}));
 		patch.setOnAction((event -> {
-			if (url.getText().toLowerCase().startsWith("uhp:")) {
-				addIndexHosts(url.getText().replace("uhp:", ""));
+			if (url.getText().equals("")) {
+				addIndexHosts(scrips.getSelectionModel().getSelectedItem().toLowerCase());
 			} else {
 				addHosts(url.getText());
 			}
@@ -59,8 +71,8 @@ public class Controller {
 			hosts.clear();
 		}));
 		remove.setOnAction((event -> {
-			if (url.getText().toLowerCase().startsWith("uhp:")) {
-				addIndexHosts(url.getText().replace("uhp:", ""));
+			if (url.getText().equals("")) {
+				addIndexHosts(scrips.getSelectionModel().getSelectedItem().toLowerCase());
 			} else {
 				addHosts(url.getText());
 			}
@@ -70,6 +82,30 @@ public class Controller {
 			fehler = true;
 			hosts.clear();
 		}));
+	}
+
+	private void getScrips() {
+		ArrayList<String> scripts = new ArrayList<String>();
+		String logscripts = "Following Scrips Loadet: ";
+		try {
+			URL link = new URL(
+					"https://raw.githubusercontent.com/xRealNeon/UniversalHostsPatcher/master/scripts/index.list");
+			BufferedReader in = new BufferedReader(new InputStreamReader(link.openStream()));
+			String line;
+
+			while ((line = in.readLine()) != null) {
+				logscripts = logscripts + line.substring(0, 1).toUpperCase() + line.substring(1) + ", ";
+				scripts.add(line.substring(0, 1).toUpperCase() + line.substring(1));
+			}
+			System.out.println(logscripts.substring(0, logscripts.length() - 2));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		String[] scriptsarr = new String[scripts.size()];
+		scriptsarr = scripts.toArray(scriptsarr);
+		scrips.setItems(FXCollections.observableArrayList(scriptsarr));
+		scrips.getSelectionModel().selectFirst();
 	}
 
 	private ArrayList<String> hosts = new ArrayList<String>();
@@ -214,7 +250,7 @@ public class Controller {
 		if (OsCheck.getOperatingSystemType().equals(OSType.MacOS)) {
 			return new File("/private/etc/hosts");
 		}
-		return null;
+		return new File(UniversalHostsPatcher.customPath);
 	}
 
 	private void showDialog(String title, String header, AlertType type, String text) {
