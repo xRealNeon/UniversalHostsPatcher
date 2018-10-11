@@ -16,3 +16,8 @@ On Linux run `sudo java -jar UniversalHostsPatcher-Other.jar`
 ### MacOS
 
 On MacOS run `sudo java -jar UniversalHostsPatcher-Other.jar`
+
+## Add Script
+
+1. Add your Script under `/Scripts`
+2. Add your Script in `index.list`
