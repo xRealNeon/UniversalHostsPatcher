@@ -7,12 +7,12 @@
 
 ### Windows
 
-On Windows run `Windows.bat`
+On Windows run `UniversalHostsPatcher-Windows.exe`
 
 ### Linux
 
-On Linux run `sudo ./Linux.sh`
+On Linux run `sudo java -jar UniversalHostsPatcher-Other.jar`
 
 ### MacOS
 
-On MacOS run `MacOS.idk`
+On MacOS run `sudo java -jar UniversalHostsPatcher-Other.jar`
