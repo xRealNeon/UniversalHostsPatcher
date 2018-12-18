@@ -1,4 +1,4 @@
-package me.NeoCode.UniversalHostsPatcher;
+package me.NeoCode.universalhostspatcherui;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import me.NeoCode.UniversalHostsPatcher.OsCheck.OSType;
+import me.NeoCode.universalhostspatcherui.OsCheck.OSType;
 
 public class Controller {
 
@@ -42,6 +42,9 @@ public class Controller {
 
 	@FXML
 	ChoiceBox<String> scrips;
+
+	private ArrayList<String> hosts = new ArrayList<String>();
+	private boolean fehler;
 
 	@FXML
 	private void initialize() {
@@ -107,9 +110,6 @@ public class Controller {
 		scrips.setItems(FXCollections.observableArrayList(scriptsarr));
 		scrips.getSelectionModel().selectFirst();
 	}
-
-	private ArrayList<String> hosts = new ArrayList<String>();
-	private boolean fehler;
 
 	private void patch() {
 		try {

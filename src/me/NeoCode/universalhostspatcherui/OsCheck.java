@@ -1,4 +1,4 @@
-package me.NeoCode.UniversalHostsPatcher;
+package me.NeoCode.universalhostspatcherui;
 /**
  * helper class to check the operating system this Java VM runs in
  *
