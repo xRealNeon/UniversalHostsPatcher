@@ -32,7 +32,6 @@ public class UniversalHostsPatcher extends Application {
 			System.out.println("Running on " + System.getProperty("os.name"));
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("Layout.fxml"));
 			Scene scene = new Scene(root, 355, 176);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("UniversalHostsPatcher");
