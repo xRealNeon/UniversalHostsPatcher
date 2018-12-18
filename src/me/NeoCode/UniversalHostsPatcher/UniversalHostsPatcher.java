@@ -1,8 +1,8 @@
-package me.NeoCode.universalhostspatcherui;
+package me.neocode.universalhostspatcher;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import me.NeoCode.universalhostspatcherui.OsCheck.OSType;
+import me.neocode.universalhostspatcher.OsCheck.OSType;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;

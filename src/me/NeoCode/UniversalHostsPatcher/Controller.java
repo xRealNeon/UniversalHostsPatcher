@@ -1,4 +1,4 @@
-package me.NeoCode.universalhostspatcherui;
+package me.neocode.universalhostspatcher;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import me.NeoCode.universalhostspatcherui.OsCheck.OSType;
+import me.neocode.universalhostspatcher.OsCheck.OSType;
 
 public class Controller {
 
