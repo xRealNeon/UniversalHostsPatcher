@@ -21,4 +21,4 @@ On MacOS run `sudo java -jar UniversalHostsPatcher-Other.jar`
 
 1. Add your Script under `/Scripts`
 2. Add your Script in `index.list`
-3. Create Pull Request
+3. Create Push Request
