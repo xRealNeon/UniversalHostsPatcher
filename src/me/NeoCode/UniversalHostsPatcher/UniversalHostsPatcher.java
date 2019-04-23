@@ -35,7 +35,7 @@ public class UniversalHostsPatcher extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle("UniversalHostsPatcher");
-			primaryStage.getIcons().add(new Image(UniversalHostsPatcher.class.getResourceAsStream("icon.png")));
+			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
